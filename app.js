@@ -18,7 +18,7 @@ app.get('/spellcheck/:word', (req, res) => {
   const response = { suggestions: [], correct: false }
 
   // check if word exists regardless of casing
-  if (Object.hasOwn(dictionary, word.toLowerCase())) {
+  if (dictionary[word.toLowerCase()]) {
     if(isValidCasing(word)) {
       response.correct = true
       return res.status(200).json(response)
@@ -28,7 +28,9 @@ app.get('/spellcheck/:word', (req, res) => {
     return res.status(200).json(response)
   }
 
-  return res.status(404).send('Not found.')
+  return res.status(404).json({
+    message: 'Not found.',
+  })
 })
 
 app.listen(port, () => {
