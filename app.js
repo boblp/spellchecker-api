@@ -1,12 +1,15 @@
 const express = require('express')
 const fs = require('fs')
 const app = express()
+const cors = require('cors')
 const port = 31337
 const { dictionary } = JSON.parse(fs.readFileSync('dictionary.json', 'utf8'))
 const {
   isValidCasing,
   getSuggestions,
 } = require('./util')
+
+app.use(cors())
 
 app.get('/', (req, res) => {
   // Please check the util.js file to see possible upgrades to this API.
