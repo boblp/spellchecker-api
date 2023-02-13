@@ -3,7 +3,6 @@ const fs = require('fs')
 const app = express()
 const port = 31337
 const { dictionary } = JSON.parse(fs.readFileSync('dictionary.json', 'utf8'))
-console.log(dictionary)
 const {
   isValidCasing,
   getSuggestions,
