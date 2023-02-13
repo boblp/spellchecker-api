@@ -3,6 +3,7 @@ const fs = require('fs')
 const app = express()
 const port = 31337
 const { dictionary } = JSON.parse(fs.readFileSync('dictionary.json', 'utf8'))
+console.log(dictionary)
 const {
   isValidCasing,
   getSuggestions,
@@ -32,5 +33,5 @@ app.get('/spellcheck/:word', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Api listening on port ${port}`)
 })
